@@ -110,14 +110,15 @@ def altaz_grid(
     dithers = [Deg10(-1), Deg10(1)]
     n_azs = [40, 25, 15, 10, 5, 4 ]
     ii = 0
-    coords = np.array((sum(n_azs, 2)))
+    jj = 0
+    coords = np.zeros((sum(n_azs, 2)))
     for alt in np.linspace(start_alt, stop_alt, 6):
         for az in np.linspace(start_az, stop_az, n_azs[ii]):
-            coords.append()
-
+            coords[jj,:] = np.array([alt, az])
+            jj+=1
         ii+=1
 
-
+    return coords
 
 if __name__ == "__main__":
     grid = altaz_grid()
